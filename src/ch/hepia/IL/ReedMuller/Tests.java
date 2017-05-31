@@ -1,5 +1,11 @@
+package ch.hepia.IL.ReedMuller;
 import static org.junit.Assert.*;
+
+import java.util.Random;
+
 import org.junit.Test;
+
+import ch.hepia.IL.ReedMuller.searches.ExaustiveSearch;
 
 public class Tests {
 
@@ -28,6 +34,25 @@ public class Tests {
 		ReedMullerOne rmo = new ReedMullerOne(3);
 		for (int i = 0; i < (1 << 3); i++) {
 			assertEquals(i, rmo.decode(rmo.encode(i)));
+		}
+	}
+	
+	@Test
+	public void HamDistTest() {
+		long w1 = 0b000111;
+		long w2 = 0b010101;
+		assertEquals(2, BitUtil.HamDist(w1, w2));
+	}
+	
+	@Test
+	public void ExaustiveSearchTest() {
+		ReedMullerOne rmo = new ReedMullerOne(3);
+		Random rand = new Random();
+		for (int i = 0; i < (1 << 3); i++) {
+			int y = rmo.encode(i);
+			int z = y | (1 << rand.nextInt(1 << 3));
+			y = ExaustiveSearch.getInstance().nearestWord(z, rmo);
+			assertEquals(i, y);
 		}
 	}
 

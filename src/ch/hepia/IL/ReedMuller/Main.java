@@ -1,3 +1,5 @@
+package ch.hepia.IL.ReedMuller;
+
 import java.io.*;
 import java.util.*;
 import java.math.*;
@@ -9,17 +11,17 @@ public class Main {
 		// soit du clavier, d'un fichier ou de la ligne de commande
 		Scanner in;
 		switch (args.length) {
-		case 0:
-			in = new Scanner(System.in);
-			break;
-		case 1:
-			in = new Scanner(new File(args[0]));
-			break;
-		default:
-			String source = args[0];
-			for (int i = 1; i < args.length; i++)
-				source += " " + args[i];
-			in = new Scanner(source);
+			case 0:
+				in = new Scanner(System.in);
+				break;
+			case 1:
+				in = new Scanner(new File(args[0]));
+				break;
+			default:
+				String source = args[0];
+				for (int i = 1; i < args.length; i++)
+					source += " " + args[i];
+				in = new Scanner(source);
 		}
 
 		// les impressions des menus sont envoyées sur le canal d'erreur
@@ -47,26 +49,26 @@ public class Main {
 		if (mode == 1) {
 			do {
 				switch (choix) {
-				case 1:
-					// vos opérations pour l'encodage du mot courant,
-					// ne rien afficher sur la sortie standard
-					break;
-				case 2:
-					// vos opérations pour le décodage du mot courant,
-					// ne rien afficher sur la sortie standard
-					break;
-				case 3:
-					// vos opérations pour le bruitage du mot courant,
-					// ne rien afficher sur la sortie standard
-					break;
-				case 4:
-					// vos opérations pour le débruitage du mot courant,
-					// ne rien afficher sur la sortie standard
-					break;
-				case 5:
-					System.err.println("\nEntrer un mot (en décimal)");
-					BigInteger mot = new BigInteger(in.next());
-					break;
+					case 1:
+						// vos opérations pour l'encodage du mot courant,
+						// ne rien afficher sur la sortie standard
+						break;
+					case 2:
+						// vos opérations pour le décodage du mot courant,
+						// ne rien afficher sur la sortie standard
+						break;
+					case 3:
+						// vos opérations pour le bruitage du mot courant,
+						// ne rien afficher sur la sortie standard
+						break;
+					case 4:
+						// vos opérations pour le débruitage du mot courant,
+						// ne rien afficher sur la sortie standard
+						break;
+					case 5:
+						System.err.println("\nEntrer un mot (en décimal)");
+						BigInteger mot = new BigInteger(in.next());
+						break;
 				}
 				if (choix != 5) {
 					System.err.println("Valeur du mot courant (en décimal):");
@@ -80,27 +82,28 @@ public class Main {
 			do {
 				String fileName;
 				switch (choix) {
-				case 1:
-					// vos opérations pour l'encodage de l'image courante,
-					// ne rien afficher sur la sortie standard
-					break;
-				case 2:
-					// vos opérations pour le décodage de l'image courante,
-					// ne rien afficher sur la sortie standard
-					break;
-				case 3:
-					// vos opérations pour le bruitage de l'image courante,
-					// ne rien afficher sur la sortie standard
-					break;
-				case 4:
-					// vos opérations pour le débruitage de l'image courante,
-					// ne rien afficher sur la sortie standard
-					break;
-				case 5:
-					System.err.println("Nom du fichier de l'image à charger (format png):");
-					fileName = in.next();
-					// lire le fichier contenant l'image pgm
-					break;
+					case 1:
+						// vos opérations pour l'encodage de l'image courante,
+						// ne rien afficher sur la sortie standard
+						break;
+					case 2:
+						// vos opérations pour le décodage de l'image courante,
+						// ne rien afficher sur la sortie standard
+						break;
+					case 3:
+						// vos opérations pour le bruitage de l'image courante,
+						// ne rien afficher sur la sortie standard
+						break;
+					case 4:
+						// vos opérations pour le débruitage de l'image
+						// courante,
+						// ne rien afficher sur la sortie standard
+						break;
+					case 5:
+						System.err.println("Nom du fichier de l'image à charger (format png):");
+						fileName = in.next();
+						// lire le fichier contenant l'image pgm
+						break;
 				}
 				if (choix != 5) {
 					System.err.println("Nom du fichier où sauver l'image courante (format png):");
