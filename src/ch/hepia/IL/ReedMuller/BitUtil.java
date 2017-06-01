@@ -22,4 +22,9 @@ public class BitUtil {
 		return dist;
 	}
 	
+	public static String toBinaryString(long w, int r) {
+		return String.format("%"+(1 << r)+"s", Long.toBinaryString(Long.reverse(w) >>> (64 - (1 << r)))).replace(' ', '0');
+		
+	}
+	
 }
