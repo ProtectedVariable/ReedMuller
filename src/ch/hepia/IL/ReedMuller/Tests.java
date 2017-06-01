@@ -49,7 +49,7 @@ public class Tests {
 	public void ExaustiveSearchTest() {
 		ReedMullerOne rmo = new ReedMullerOne(3);
 		Random rand = new Random();
-		for (int i = 0; i < (1 << 3); i++) {
+		for (int i = 0; i < (1 << 4); i++) {
 			int y = rmo.encode(i);
 			int z = y | (1 << rand.nextInt(1 << 3));
 			y = ExaustiveSearch.getInstance().nearestWord(z, rmo);
@@ -61,12 +61,18 @@ public class Tests {
 	public void SemiExaustiveSearchTest() {
 		ReedMullerOne rmo = new ReedMullerOne(3);
 		Random rand = new Random();
-		for (int i = 0; i < (1 << 3); i++) {
+		for (int i = 0; i < (1 << 4); i++) {
 			int y = rmo.encode(i);
 			int z = y | (1 << rand.nextInt(1 << 3));
 			y = SemiExaustiveSearch.getInstance().nearestWord(z, rmo);
 			assertEquals(i, y);
 		}
+	}
+	
+	
+	@Test
+	public void QuickSearchTest() {
+		
 	}
 
 }

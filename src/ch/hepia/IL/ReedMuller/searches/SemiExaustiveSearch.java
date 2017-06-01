@@ -21,7 +21,7 @@ public class SemiExaustiveSearch implements NearestSearchFunction {
 	public int nearestWord(int z, ReedMullerOne rmo) {
 		int nn = 0;
 		int nd = Integer.MAX_VALUE;
-		for (int i = 0; i < (1 << rmo.getR()-1); i++) {
+		for (int i = 0; i < (1 << (rmo.getR())); i++) {
 			int dist = BitUtil.HamDist(rmo.encode(i), z);
 			if(dist < nd) {
 				nn = i;
