@@ -1,7 +1,9 @@
 package ch.hepia.IL.ReedMuller;
 
+import java.math.BigInteger;
+
 public interface NearestSearchFunction {
 
-	int nearestWord(int z, ReedMullerOne rmo);
+	BigInteger nearestWord(BigInteger z, ReedMullerOne rmo);
 	
 }

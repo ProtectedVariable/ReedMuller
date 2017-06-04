@@ -45,6 +45,7 @@ public class Main {
 
 		// opération à effectuer sur le mot ou l'image
 		String menu = "\nMenu opérations\n" + "0: Quitter\n" + "1: Encoder\n" + "2: Décoder\n" + "3: Bruiter\n" + "4: Débruiter\n" + "5: Réinitialiser\n" + "Opération choisie:";
+		ReedMullerOne rmo = new ReedMullerOne(r);
 		int choix = 5;
 		if (mode == 1) {
 			do {
