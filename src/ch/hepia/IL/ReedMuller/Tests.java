@@ -35,8 +35,8 @@ public class Tests {
 
 	@Test
 	public void DecodeTest() {
-		ReedMullerOne rmo = new ReedMullerOne(3);
-		for (int i = 0; i < (1 << 3); i++) {
+		ReedMullerOne rmo = new ReedMullerOne(5);
+		for (int i = 0; i < (1 << 6); i++) {
 			assertEquals(i, rmo.decode(rmo.encode(BigInteger.valueOf(i))).intValue());
 		}
 	}

@@ -3,6 +3,8 @@ package ch.hepia.IL.ReedMuller;
 import java.io.*;
 import java.util.*;
 
+import ch.hepia.IL.ReedMuller.files.PGMReader;
+import ch.hepia.IL.ReedMuller.files.PGMWriter;
 import ch.hepia.IL.ReedMuller.searches.QuickSearch;
 
 import java.math.*;
@@ -68,7 +70,7 @@ public class Main {
 						// vos opérations pour le bruitage du mot courant,
 						// ne rien afficher sur la sortie standard
 						for (int i = 0; i < (1 << rmo.getR()); i++) {
-							if(Math.random() <= seuil) {
+							if (Math.random() <= seuil) {
 								mot = mot.flipBit(i);
 							}
 						}
@@ -93,36 +95,63 @@ public class Main {
 				choix = in.nextInt();
 			} while (choix != 0);
 		} else if (mode == 2) {
+			BigInteger file[][] = null;
 			do {
 				String fileName;
 				switch (choix) {
 					case 1:
 						// vos opérations pour l'encodage de l'image courante,
 						// ne rien afficher sur la sortie standard
+						for (int i = 0; i < file.length; i++) {
+							for (int j = 0; j < file[0].length; j++) {
+								file[i][j] = rmo.encode(file[i][j]);
+							}
+						}
 						break;
 					case 2:
 						// vos opérations pour le décodage de l'image courante,
 						// ne rien afficher sur la sortie standard
+						for (int i = 0; i < file.length; i++) {
+							for (int j = 0; j < file[0].length; j++) {
+								file[i][j] = rmo.decode(file[i][j]);
+							}
+						}
 						break;
 					case 3:
 						// vos opérations pour le bruitage de l'image courante,
 						// ne rien afficher sur la sortie standard
+						for (int i = 0; i < file.length; i++) {
+							for (int j = 0; j < file[0].length; j++) {
+								for (int k = 0; k < (1 << rmo.getR()); k++) {
+									if (Math.random() <= seuil) {
+										file[i][j] = file[i][j].flipBit(k);
+									}
+								}
+							}
+						}
 						break;
 					case 4:
 						// vos opérations pour le débruitage de l'image
 						// courante,
 						// ne rien afficher sur la sortie standard
+						for (int i = 0; i < file.length; i++) {
+							for (int j = 0; j < file[0].length; j++) {
+								file[i][j] = rmo.encode(QuickSearch.getInstance().nearestWord(file[i][j], rmo));
+							}
+						}
 						break;
 					case 5:
 						System.err.println("Nom du fichier de l'image à charger (format png):");
 						fileName = in.next();
 						// lire le fichier contenant l'image pgm
+						file = PGMReader.parse(fileName);
 						break;
 				}
 				if (choix != 5) {
 					System.err.println("Nom du fichier où sauver l'image courante (format png):");
 					fileName = in.next();
 					// sauver l'image courante au format pgm
+					PGMWriter.writeFile(file, fileName);
 				}
 				System.err.println(menu);
 				choix = in.nextInt();

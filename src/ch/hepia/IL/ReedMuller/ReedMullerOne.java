@@ -34,7 +34,7 @@ public class ReedMullerOne {
 		BigInteger x = BigInteger.valueOf(0);
 		BigInteger y0 = BigInteger.valueOf(BitUtil.getBitAt(0, y));
 		if(BitUtil.getBitAt(0, y) == 1) {
-			x = x.setBit(0); //x = (int) BitUtil.setBitAt(0, x, BitUtil.getBitAt(0, y));
+			x = x.setBit(r); //x = (int) BitUtil.setBitAt(0, x, BitUtil.getBitAt(0, y));
 		}
 		
 		BigInteger w = y.xor(b[r].multiply(y0));
