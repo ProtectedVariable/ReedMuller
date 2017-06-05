@@ -18,7 +18,7 @@ public class BitUtil {
 
 	public static int HamDist(BigInteger w1, BigInteger w2) {
 		BigInteger delta = w1.xor(w2);
-		int dist = 0;
+		//int dist = 0;
 		/*
 		for (int i = 0; i < delta.bitCount(); i++) {
 			//dist += (delta >> i) & 1;
