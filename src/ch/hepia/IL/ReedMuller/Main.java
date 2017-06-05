@@ -2,6 +2,9 @@ package ch.hepia.IL.ReedMuller;
 
 import java.io.*;
 import java.util.*;
+
+import ch.hepia.IL.ReedMuller.searches.QuickSearch;
+
 import java.math.*;
 
 public class Main {
@@ -48,33 +51,43 @@ public class Main {
 		ReedMullerOne rmo = new ReedMullerOne(r);
 		int choix = 5;
 		if (mode == 1) {
+			BigInteger mot = null;
 			do {
 				switch (choix) {
 					case 1:
 						// vos opérations pour l'encodage du mot courant,
 						// ne rien afficher sur la sortie standard
+						mot = rmo.encode(mot);
 						break;
 					case 2:
 						// vos opérations pour le décodage du mot courant,
 						// ne rien afficher sur la sortie standard
+						mot = rmo.decode(mot);
 						break;
 					case 3:
 						// vos opérations pour le bruitage du mot courant,
 						// ne rien afficher sur la sortie standard
+						for (int i = 0; i < (1 << rmo.getR()); i++) {
+							if(Math.random() <= seuil) {
+								mot = mot.flipBit(i);
+							}
+						}
 						break;
 					case 4:
 						// vos opérations pour le débruitage du mot courant,
 						// ne rien afficher sur la sortie standard
+						mot = rmo.encode(QuickSearch.getInstance().nearestWord(mot, rmo));
 						break;
 					case 5:
 						System.err.println("\nEntrer un mot (en décimal)");
-						BigInteger mot = new BigInteger(in.next());
+						mot = new BigInteger(in.next());
 						break;
 				}
 				if (choix != 5) {
 					System.err.println("Valeur du mot courant (en décimal):");
 					// imprimer la valeur du mot courant en décimal
 					// sur la sortie standard
+					System.out.println(mot);
 				}
 				System.err.println(menu);
 				choix = in.nextInt();

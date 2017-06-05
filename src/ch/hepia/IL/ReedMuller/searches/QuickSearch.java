@@ -66,7 +66,6 @@ public class QuickSearch implements NearestSearchFunction {
 				F = F.setBit(i);
 			}
 		}
-		System.out.println(F.toString(2));
 		int[] Fhat = vecTimesMat(F, Hr);
 		int maxi = 0;
 		int maxv = 0;
