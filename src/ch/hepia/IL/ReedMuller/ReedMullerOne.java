@@ -12,7 +12,7 @@ public class ReedMullerOne {
 		this.b = new BigInteger[r + 1];
 		generateBase();
 	}
-
+	
 	private void generateBase() {
 		for (int k = 0; k < r; k++) {
 			b[k] = BigInteger.valueOf(0);
@@ -26,10 +26,20 @@ public class ReedMullerOne {
 		//b[r] = (1L << (1L << r)) - 1;
 	}
 
+	/**
+	 * Encodes a word
+	 * @param x the original word
+	 * @return the encoded word
+	 */
 	public BigInteger encode(BigInteger x) {
 		return bitwiseMatrixProduct(b, x);
 	}
 
+	/**
+	 * Decodes a word
+	 * @param y encoded word
+	 * @return original word
+	 */
 	public BigInteger decode(BigInteger y) {
 		BigInteger x = BigInteger.valueOf(0);
 		BigInteger y0 = BigInteger.valueOf(BitUtil.getBitAt(0, y));
@@ -53,6 +63,13 @@ public class ReedMullerOne {
 		return x;
 	}
 
+	
+	/**
+	 * Computes matrix * vector considering each bit to be a column and mod 2
+	 * @param lines matrix's lines
+	 * @param vector vector to multiply
+	 * @return the result of the operation
+	 */
 	public BigInteger bitwiseMatrixProduct(BigInteger[] lines, BigInteger vector) {
 		BigInteger y = BigInteger.valueOf(0);
 		for (int i = 0; i < (1 << r); i++) {
@@ -68,7 +85,7 @@ public class ReedMullerOne {
 		return r;
 	}
 
-	public BigInteger[] getB() {
+	public BigInteger[] getBase() {
 		return b;
 	}
 

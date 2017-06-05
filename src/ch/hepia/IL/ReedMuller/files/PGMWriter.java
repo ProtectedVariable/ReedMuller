@@ -6,6 +6,11 @@ import java.math.BigInteger;
 
 public class PGMWriter {
 
+	/**
+	 * Writes image data to a standard pgm file
+	 * @param values image data
+	 * @param filename file to write to
+	 */
 	public static void writeFile(BigInteger[][] values, String filename) {
 		try{
 		    PrintWriter writer = new PrintWriter(filename, "UTF-8");

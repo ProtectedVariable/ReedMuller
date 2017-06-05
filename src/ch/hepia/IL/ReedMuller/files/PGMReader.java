@@ -7,8 +7,12 @@ import java.math.BigInteger;
 
 public class PGMReader {
 
+	/**
+	 * Converts a PGM file to a 2d array of numbers
+	 * @param filename the file to parse
+	 * @return 2D array representing the image
+	 */
 	public static BigInteger[][] parse(String filename) {
-
 		BigInteger[][] values = null;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(filename));
@@ -31,6 +35,7 @@ public class PGMReader {
 					}
 				} else {
 					if(y >= values.length) {
+						br.close();
 						throw new RuntimeException("Too many numbers");
 					}
 					values[y][x] = new BigInteger(line);

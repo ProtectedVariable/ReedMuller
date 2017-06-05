@@ -16,12 +16,12 @@ public class Tests {
 	@Test
 	public void CodeGeneration() {
 		ReedMullerOne rmo = new ReedMullerOne(5);
-		assertEquals(2863311530L, rmo.getB()[0].longValue());
-		assertEquals(3435973836L, rmo.getB()[1].longValue());
-		assertEquals(4042322160L, rmo.getB()[2].longValue());
-		assertEquals(4278255360L, rmo.getB()[3].longValue());
-		assertEquals(4294901760L, rmo.getB()[4].longValue());
-		assertEquals(4294967295L, rmo.getB()[5].longValue());
+		assertEquals(2863311530L, rmo.getBase()[0].longValue());
+		assertEquals(3435973836L, rmo.getBase()[1].longValue());
+		assertEquals(4042322160L, rmo.getBase()[2].longValue());
+		assertEquals(4278255360L, rmo.getBase()[3].longValue());
+		assertEquals(4294901760L, rmo.getBase()[4].longValue());
+		assertEquals(4294967295L, rmo.getBase()[5].longValue());
 	}
 
 	@Test
@@ -79,7 +79,7 @@ public class Tests {
 		for (int i = 0; i < (1 << 4); i++) {
 			BigInteger y = rmo.encode(BigInteger.valueOf(i));
 			BigInteger z = y.or(BigInteger.valueOf(1 << rand.nextInt(1 << 3)));
-			y = QuickSearch.getInstance().nearestWord(y, rmo);
+			y = QuickSearch.getInstance().nearestWord(z, rmo);
 			assertEquals(i, y.intValue());
 		}
 	}

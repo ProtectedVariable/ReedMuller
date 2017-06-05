@@ -1,13 +1,12 @@
-package ch.hepia.IL.ReedMuller;
+import java.io.File;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.util.Scanner;
 
-import java.io.*;
-import java.util.*;
-
+import ch.hepia.IL.ReedMuller.ReedMullerOne;
 import ch.hepia.IL.ReedMuller.files.PGMReader;
 import ch.hepia.IL.ReedMuller.files.PGMWriter;
 import ch.hepia.IL.ReedMuller.searches.QuickSearch;
-
-import java.math.*;
 
 public class Main {
 
@@ -156,6 +155,7 @@ public class Main {
 				System.err.println(menu);
 				choix = in.nextInt();
 			} while (choix != 0);
+			in.close();
 		}
 	}
 }

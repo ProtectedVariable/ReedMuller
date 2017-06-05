@@ -18,7 +18,12 @@ public class QuickSearch implements NearestSearchFunction {
 	}
 	
 
-	//0 => -1, 1 => 1.
+
+	/**
+	 * Generates Hr matrix
+	 * @param r the r parameter of the rm code
+	 * @return a matrix with 0 meaning -1 and 1 meaning... well... 1
+	 */
 	private BigInteger[] getMatrix(int r) {
 		if(r > 1) {
 			BigInteger[] Hrm1 = getMatrix(r-1);
@@ -41,6 +46,12 @@ public class QuickSearch implements NearestSearchFunction {
 		}
 	}
 	
+	/**
+	 * Computes vector * matrix
+	 * @param vec vector to multiply
+	 * @param mat matrix to multply
+	 * @return array of integers with each column result
+	 */
 	private int[] vecTimesMat(BigInteger vec, BigInteger[] mat) {
 		int[] result = new int[mat.length];
 		for (int i = 0; i < mat.length; i++) {
